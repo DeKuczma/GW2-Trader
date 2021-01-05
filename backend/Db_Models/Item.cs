@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Item
     {
@@ -25,13 +25,11 @@ namespace Db_Models
         [Required]
         public int VendorValue { get; set;}
         [Required]
-        public IEnumerable<string> Flags { get; set; }
+        public List<string> Flags { get; set; }
         [Required]
-        public IEnumerable<string> GameTypes { get; set; }
+        public List<string> GameTypes { get; set; }
         [Required]
-        public IEnumerable<string> Restrictions { get; set; }
-        public UpgradeItem UpgradeInto { get; set; }
-        public UpgradeItem UpgradeFrom { get; set; }
+        public List<string> Restrictions { get; set; }
 
         public int? ArmorId { get; set; }
         public Armor Armor { get; set; }

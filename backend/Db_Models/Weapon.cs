@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Weapon
     {
@@ -17,6 +17,6 @@ namespace Db_Models
         public int MaxPower { get; set; }
         [Required]
         public int Defense { get; set; }
-        public IEnumerable<int> StatChoices { get; set; }
+        public List<int> StatChoices { get; set; }
     }
 }

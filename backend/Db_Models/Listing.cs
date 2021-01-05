@@ -4,17 +4,17 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Listing
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("Item")]
-        public int ItemId { get; set; }
+        [ForeignKey("ItemId")]
+        public Item Item { get; set; }
         [Required]
-        public IEnumerable<int> BuyListing { get; set; }
+        public List<int> BuyListing { get; set; }
         [Required]
-        public IEnumerable<int> SellListing { get; set; }
+        public List<int> SellListing { get; set; }
     }
 }

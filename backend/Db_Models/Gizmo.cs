@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Gizmo
     {
@@ -14,6 +14,6 @@ namespace Db_Models
 
         public int GuildUpgradeId { get; set; }
         [Required]
-        public IEnumerable<int> VendorIds { get; set; }
+        public List<int> VendorIds { get; set; }
     }
 }

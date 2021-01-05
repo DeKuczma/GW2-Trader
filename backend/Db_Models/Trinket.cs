@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Trinket
     {
@@ -13,6 +13,6 @@ namespace Db_Models
         public string Type { get; set; }
         public int SuffixItemId { get; set; }
         public string SecondarySuffixItemId { get; set; }
-        public IEnumerable<int> StatChoices { get; set; }
+        public List<int> StatChoices { get; set; }
     }
 }

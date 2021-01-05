@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Skin
     {
@@ -14,9 +14,9 @@ namespace Db_Models
         [Required]
         public string Type { get; set; }
         [Required]
-        public IEnumerable<string> Flags { get; set; }
+        public List<string> Flags { get; set; }
         [Required]
-        public IEnumerable<string> Restrictions { get; set; }
+        public List<string> Restrictions { get; set; }
         [Required]
         public string Icon { get; set; }
         [Required]

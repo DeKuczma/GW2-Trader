@@ -11,10 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Db_Migration.Models;
+using BaseModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace Db_Migration
+namespace DbMigration
 {
     public class Startup
     {

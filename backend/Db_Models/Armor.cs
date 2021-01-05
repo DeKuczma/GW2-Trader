@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace Db_Models
+namespace BaseModels
 {
     public class Armor
     {
@@ -15,6 +15,6 @@ namespace Db_Models
         public string WeightClass { get; set; }
         [Required]
         public int Defense { get; set; }
-        public IEnumerable<int> StatChoice { get; set; }
+        public List<int> StatChoices { get; set; }
     }
 }
