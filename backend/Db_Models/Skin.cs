@@ -21,7 +21,6 @@ namespace BaseModels
         public string Icon { get; set; }
         [Required]
         public string Rarity { get; set; }
-        [Required]
         public string Description { get; set; }
     }
 }

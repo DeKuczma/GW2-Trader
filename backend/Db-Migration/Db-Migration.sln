@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMigration", "DbMigration.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseModels", "..\Db_Models\BaseModels.csproj", "{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFiller", "..\DbFiller\DbFiller.csproj", "{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

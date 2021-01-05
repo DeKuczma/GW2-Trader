@@ -35,7 +35,7 @@ namespace DbMigration
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Db_Migration", Version = "v1" });
             });
             services.AddEntityFrameworkNpgsql().AddDbContext<GwDbContext>(opt =>
-                opt.UseNpgsql(Configuration.GetConnectionString("PostgisConnectionString")));
+                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

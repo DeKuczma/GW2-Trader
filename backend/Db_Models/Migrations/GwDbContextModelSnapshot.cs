@@ -360,7 +360,6 @@ namespace BaseModels.Migrations
                         .UseIdentityByDefaultColumn();
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Flags")

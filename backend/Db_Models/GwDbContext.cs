@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace BaseModels
@@ -12,6 +14,17 @@ namespace BaseModels
     {
         public GwDbContext(DbContextOptions options) : base(options)
         {
+        }
+
+        public GwDbContext(string connectionString) : base(GetDbContextOptions(connectionString))
+        {
+        }
+
+        private static DbContextOptions GetDbContextOptions(string connectionString)
+        {
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+            builder.UseNpgsql(connectionString);
+            return builder.Options;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
