@@ -13,7 +13,6 @@ namespace BaseModels
         public string Type { get; set; }
 
         public int GuildUpgradeId { get; set; }
-        [Required]
         public List<int> VendorIds { get; set; }
     }
 }

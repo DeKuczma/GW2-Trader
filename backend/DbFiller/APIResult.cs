@@ -13,7 +13,7 @@ namespace DbFiller
         public APIResult(T resultObject, string additionalDetails)
         {
             ResultObject = resultObject;
-            AdditionalDetails = additionalDetails;
+            AdditionalDetails = additionalDetails.Replace("_", string.Empty);
         }
     }
 }

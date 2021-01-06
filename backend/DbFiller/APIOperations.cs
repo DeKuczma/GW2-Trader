@@ -34,9 +34,9 @@ namespace DbFiller
             return recievedIds;
         }
 
-        public APIResult<T> GetSingleObjctById<T>(HttpClient client, string endpoint) where T : class
+        public APIResult<T> GetSingleObjctById<T>(string endpoint) where T : class
         {
-            HttpResponseMessage response = client.GetAsync(endpoint).Result;
+            HttpResponseMessage response = Client.GetAsync(endpoint).Result;
 
             if (response.IsSuccessStatusCode)
             {
@@ -50,12 +50,11 @@ namespace DbFiller
         {
             List<APIResult<T>> result = new List<APIResult<T>>();
             HttpResponseMessage response = Client.GetAsync(endpoint).Result;
-
+            
             if(response.IsSuccessStatusCode)
             {
                 string content = response.Content.ReadAsStringAsync().Result;
                 Newtonsoft.Json.Linq.JArray objArray = Newtonsoft.Json.Linq.JArray.Parse(content);
-                //List<string> responseJsons = JsonConvert.DeserializeObject<List<string>>(response.Content.ReadAsStringAsync().Result);
                 foreach (var objJson in objArray)
                 {
                     string serializedObjct = JsonConvert.SerializeObject(objJson);
@@ -70,6 +69,7 @@ namespace DbFiller
         {
             string details = "";
             T obj;
+            objectString = objectString.Replace("_", string.Empty);
             Newtonsoft.Json.Linq.JObject json = Newtonsoft.Json.Linq.JObject.Parse(objectString);
             if (json.ContainsKey(Program.ADDITIONAL_INFO_KEY))
                 details = json.GetValue(Program.ADDITIONAL_INFO_KEY).ToString();

@@ -9,12 +9,10 @@ namespace BaseModels
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         public string ChatLink { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required]
-        public string IconURL { get; set; }
+        public string Icon { get; set; }
         public string Description { get; set; }
         [Required]
         public string Type { get; set; }
