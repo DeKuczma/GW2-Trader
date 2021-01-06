@@ -116,6 +116,23 @@ namespace BaseModels
                 .Property(e => e.StatChoices)
                 .HasConversion(v => JsonConvert.SerializeObject(v),
                 v => JsonConvert.DeserializeObject<List<int>>(v));
+            //Recipes class
+            builder.Entity<Recipe>()
+                .Property(e => e.Disciplines)
+                .HasConversion(v => JsonConvert.SerializeObject(v),
+                    v => JsonConvert.DeserializeObject<List<string>>(v));
+            builder.Entity<Recipe>()
+                .Property(e => e.Flags)
+                .HasConversion(v => JsonConvert.SerializeObject(v),
+                v => JsonConvert.DeserializeObject<List<string>>(v));
+            builder.Entity<Recipe>()
+                .Property(e => e.Ingredients)
+                .HasConversion(v => JsonConvert.SerializeObject(v),
+                v => JsonConvert.DeserializeObject<List<Ingredient>>(v));
+            builder.Entity<Recipe>()
+                .Property(e => e.GuildIngredients)
+                .HasConversion(v => JsonConvert.SerializeObject(v),
+                v => JsonConvert.DeserializeObject<List<Ingredient>>(v));
         }
 
         public DbSet<Account> Accounts { get; set; }
@@ -134,5 +151,6 @@ namespace BaseModels
         public DbSet<Trinket> Trinkets { get; set; }
         public DbSet<UpgradeComponent> UpgradeComponents { get; set; }
         public DbSet<Weapon> Weapons { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
     }
 }

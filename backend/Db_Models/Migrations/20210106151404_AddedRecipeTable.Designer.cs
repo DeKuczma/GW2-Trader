@@ -3,15 +3,17 @@ using System;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BaseModels.Migrations
 {
     [DbContext(typeof(GwDbContext))]
-    partial class GwDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210106151404_AddedRecipeTable")]
+    partial class AddedRecipeTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -376,8 +378,6 @@ namespace BaseModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OutputItemId");
-
                     b.ToTable("Recipes");
                 });
 
@@ -618,17 +618,6 @@ namespace BaseModels.Migrations
                         .HasForeignKey("ItemId");
 
                     b.Navigation("Item");
-                });
-
-            modelBuilder.Entity("BaseModels.Recipe", b =>
-                {
-                    b.HasOne("BaseModels.Item", "OutputItem")
-                        .WithMany()
-                        .HasForeignKey("OutputItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OutputItem");
                 });
 #pragma warning restore 612, 618
         }
