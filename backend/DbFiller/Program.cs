@@ -19,8 +19,9 @@ namespace DbFiller
     public class Program
     {
         public const string API_URL = "https://api.guildwars2.com/v2/";
-        public const string ITEM_SUFFIX = "items";
+        public const string ITEMS_SUFFIX = "items";
         public const string SKINS_SUFFIX = "skins";
+        public const string RECIPES_SUFFIX = "recipes";
         public const string ADDITIONAL_INFO_KEY = "details";
         public const string CONNECTION_STRING = "User ID=postgres;Password=admin;Host=localhost;Port=5432;Database=GW2;Pooling=true;Connection Lifetime=0;";
 
@@ -30,9 +31,10 @@ namespace DbFiller
         {
             dbOperations = new DbOperations(CONNECTION_STRING);
             apiOperations = new APIOperations(API_URL);
-            await dbOperations.ClearDb();
-            await GetSkins();
-            await GetItems();
+            //await dbOperations.ClearDb();
+            //await GetSkins();
+            //await GetItems();
+            await GetRecipes();
         }
 
         public static async Task GetSkins()
@@ -63,14 +65,14 @@ namespace DbFiller
         public static async Task GetItems()
         {
             List<Item> allItems = new List<Item>();
-            List<int> allIds = apiOperations.GetAllIds(ITEM_SUFFIX);
+            List<int> allIds = apiOperations.GetAllIds(ITEMS_SUFFIX);
 
             Console.WriteLine($"Got {allIds.Count} items Ids");
 
             for (int i = 0; i < allIds.Count; i += 200)
             {
                 IEnumerable<int> idsToDownload = allIds.Skip(i).Take(200);
-                StringBuilder endpoint = new StringBuilder(ITEM_SUFFIX).Append("?ids=");
+                StringBuilder endpoint = new StringBuilder(ITEMS_SUFFIX).Append("?ids=");
                 foreach (var id in idsToDownload)
                     endpoint.Append(id)
                         .Append(',');
@@ -172,6 +174,38 @@ namespace DbFiller
             await dbOperations.AddToEntity<Item>(allItems);
 
             Console.WriteLine("Getting items completed");
+        }
+
+
+        private static async Task GetRecipes()
+        {
+            List<Recipe> allRecipes = new List<Recipe>();
+            List<int> allIds = apiOperations.GetAllIds(RECIPES_SUFFIX);
+
+            Console.WriteLine($"Got {allIds.Count} recipes Ids");
+
+            for (int i = 0; i < allIds.Count; i += 200)
+            {
+                IEnumerable<int> idsToDownload = allIds.Skip(i).Take(200);
+                StringBuilder endpoint = new StringBuilder(RECIPES_SUFFIX).Append("?ids=");
+                foreach (var id in idsToDownload)
+                    endpoint.Append(id)
+                        .Append(',');
+                endpoint.Length--;
+                List<APIResult<Recipe>> result = apiOperations.GetObjectsByIds<Recipe>(endpoint.ToString());
+                foreach (var apiSkin in result)
+                    allRecipes.Add(apiSkin.ResultObject);
+                Console.WriteLine($"Loaded {allRecipes.Count} out of {allIds.Count} recipes");
+            }
+
+            foreach(Recipe recipe in allRecipes.ToList())
+            {
+                if(dbOperations.Context.Items.SingleOrDefault(e => e.Id == recipe.OutputItemId) == null)
+                    allRecipes.Remove(recipe);
+            }
+            await dbOperations.AddToEntity<Recipe>(allRecipes);
+
+            Console.WriteLine("Getting skins completed");
         }
     }
 }

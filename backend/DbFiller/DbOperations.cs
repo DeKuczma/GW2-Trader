@@ -8,7 +8,7 @@ namespace DbFiller
 {
     public class DbOperations
     {
-        private GwDbContext Context { get; set; }
+        public GwDbContext Context { get; set; }
 
         public DbOperations(string connectionString)
         {

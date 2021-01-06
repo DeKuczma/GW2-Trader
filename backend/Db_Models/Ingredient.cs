@@ -6,7 +6,7 @@ namespace BaseModels
 {
     public class Ingredient
     {
-        public int Id { get; set; }
+        public int ItemId { get; set; }
         public int Count { get; set; }
     }
 }
