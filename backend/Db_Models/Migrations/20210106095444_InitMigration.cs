@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BaseModels.Migrations
 {
-    public partial class initial_db_migration : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -151,7 +151,7 @@ namespace BaseModels.Migrations
                     Type = table.Column<string>(type: "text", nullable: false),
                     Flags = table.Column<string>(type: "text", nullable: false),
                     Restrictions = table.Column<string>(type: "text", nullable: false),
-                    Icon = table.Column<string>(type: "text", nullable: false),
+                    Icon = table.Column<string>(type: "text", nullable: true),
                     Rarity = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: true)
                 },

@@ -17,7 +17,6 @@ namespace BaseModels
         public List<string> Flags { get; set; }
         [Required]
         public List<string> Restrictions { get; set; }
-        [Required]
         public string Icon { get; set; }
         [Required]
         public string Rarity { get; set; }

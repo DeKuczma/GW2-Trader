@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BaseModels.Migrations
 {
     [DbContext(typeof(GwDbContext))]
-    [Migration("20210105205825_initial_db_migration")]
-    partial class initial_db_migration
+    [Migration("20210106095444_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -369,7 +369,6 @@ namespace BaseModels.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
