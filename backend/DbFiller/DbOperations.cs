@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DbFiller.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DbFiller
 {
     public class DbOperations
     {
         public PostgresContext Context { get; set; }
-
         public DbOperations(string connectionString)
         {
-            Context = new PostgresContext(connectionString);
+            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
+            builder.UseNpgsql(connectionString);
+            Context = new PostgresContext(builder.Options);
         }
         public async Task ClearDb()
         {

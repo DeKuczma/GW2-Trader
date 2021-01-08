@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace BaseModels
+namespace GW2API.Models
 {
-    public class GwDbContext : DbContext
+    public class PostgresContext : DbContext
     {
-        public GwDbContext(DbContextOptions options) : base(options)
+
+        public PostgresContext(DbContextOptions options) : base(options)
         {
         }
 
@@ -141,6 +140,6 @@ namespace BaseModels
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipePrice> RecipePrices { get; set; }
-        public DbSet<CommandExecutionLog> UpdateTimees { get; set; }
+        public DbSet<CommandExecutionLog> CommandExecutionLogs { get; set; }
     }
 }

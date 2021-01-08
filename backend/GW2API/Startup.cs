@@ -15,6 +15,7 @@ using GW2API.Datas;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using GW2API.Models;
 
 namespace GW2API
 {
@@ -36,7 +37,7 @@ namespace GW2API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GW2API", Version = "v1" });
             });
-            services.AddDbContext<GwDbContext>(opt =>
+            services.AddDbContext<PostgresContext>(opt =>
             {
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnectionString"));
             });

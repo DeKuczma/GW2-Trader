@@ -5,11 +5,18 @@ using System.Text;
 
 namespace BaseModels
 {
-    public class UpdateTime
+    public class CommandExecutionLog
     {
         [Key]
         public int Id { get; set; }
         [Required]
         public DateTime LastUpdate { get; set; }
+        [Required]
+        public int Deleted { get; set; }
+        [Required]
+        public int Inserted { get; set; }
+        [Required]
+        public string CommandExecuted { get; set; }
+
     }
 }

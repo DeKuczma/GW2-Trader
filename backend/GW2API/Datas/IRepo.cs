@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BaseModels;
 
 namespace GW2API.Datas
 {
-    public class IRepo
+    public interface IRepo
     {
+        public bool SaveChanges();
+        public IEnumerable<Recipe> GetAllRecipes();
+        public IEnumerable<Item> GetAllItems();
+        public void AddRecipePrice(RecipePrice recipePrice);
     }
 }

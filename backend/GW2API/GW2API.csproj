@@ -21,12 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Models\" />
-    <Folder Include="Profiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Db_Models\BaseModels.csproj" />
   </ItemGroup>
 

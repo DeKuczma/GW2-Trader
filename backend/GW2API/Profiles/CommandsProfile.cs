@@ -12,7 +12,7 @@ namespace GW2API.Profiles
     {
         public CommandsProfile()
         {
-            CreateMap<ExecuteCommandReadDto, CommandsProfile>();
+            CreateMap<ExecuteCommandReadDto, ExecuteCommand>();
         }
     }
 }
