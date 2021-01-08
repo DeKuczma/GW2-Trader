@@ -6,15 +6,17 @@ using System.Text;
 
 namespace BaseModels
 {
-    public class Listing
+    public class RecipePrice
     {
         [Key]
         public int Id { get; set; }
         [Required, ForeignKey("ItemId")]
         public Item Item { get; set; }
+        public int CreationPriceBuyNow { get; set; }
+        public int CreationPriceBuyOrder { get; set; }
         [Required]
-        public List<TPListing> BuyListing { get; set; }
-        [Required]
-        public List<TPListing> SellListing { get; set; }
+        public bool PossibleToBuy { get; set; }
+
+
     }
 }

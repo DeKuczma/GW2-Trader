@@ -3,15 +3,17 @@ using System;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BaseModels.Migrations
 {
     [DbContext(typeof(GwDbContext))]
-    partial class GwDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210108122437_ListinClassChanges")]
+    partial class ListinClassChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

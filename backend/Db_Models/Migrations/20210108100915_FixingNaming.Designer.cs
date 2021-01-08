@@ -3,15 +3,17 @@ using System;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BaseModels.Migrations
 {
     [DbContext(typeof(GwDbContext))]
-    partial class GwDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210108100915_FixingNaming")]
+    partial class FixingNaming
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -397,9 +399,6 @@ namespace BaseModels.Migrations
                     b.Property<int>("ItemId")
                         .HasColumnType("integer");
 
-                    b.Property<bool>("PossibleToBuy")
-                        .HasColumnType("boolean");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ItemId");
@@ -462,6 +461,24 @@ namespace BaseModels.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skins");
+                });
+
+            modelBuilder.Entity("BaseModels.TPListing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UnitPrice")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TPListings");
                 });
 
             modelBuilder.Entity("BaseModels.Trinket", b =>

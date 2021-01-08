@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbMigration", "DbMigration.csproj", "{765ECBA1-C44D-4752-AEC8-F61A0ABA9009}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbMigration", "DbMigration.csproj", "{765ECBA1-C44D-4752-AEC8-F61A0ABA9009}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseModels", "..\Db_Models\BaseModels.csproj", "{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseModels", "..\Db_Models\BaseModels.csproj", "{525E5B91-B818-4F67-A8BF-E511A0BEF6BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbFiller", "..\DbFiller\DbFiller.csproj", "{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbFiller", "..\DbFiller\DbFiller.csproj", "{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GW2API", "..\GW2API\GW2API.csproj", "{9A98C0E3-BE60-44F7-98DE-3389686D0FE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDC3BA28-0A8F-46C8-B242-8E2B9B20A84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A98C0E3-BE60-44F7-98DE-3389686D0FE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A98C0E3-BE60-44F7-98DE-3389686D0FE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A98C0E3-BE60-44F7-98DE-3389686D0FE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A98C0E3-BE60-44F7-98DE-3389686D0FE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

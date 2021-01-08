@@ -3,16 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DbFiller.Models;
 
 namespace DbFiller
 {
     public class DbOperations
     {
-        public GwDbContext Context { get; set; }
+        public PostgresContext Context { get; set; }
 
         public DbOperations(string connectionString)
         {
-            Context = new GwDbContext(connectionString);
+            Context = new PostgresContext(connectionString);
         }
         public async Task ClearDb()
         {
@@ -28,7 +29,6 @@ namespace DbFiller
             DeleteAllEntity<Miniature>();
             DeleteAllEntity<SalvageKit>();
             DeleteAllEntity<Skin>();
-            DeleteAllEntity<TPListing>();
             DeleteAllEntity<Trinket>();
             DeleteAllEntity<UpgradeComponent>();
             DeleteAllEntity<Weapon>();

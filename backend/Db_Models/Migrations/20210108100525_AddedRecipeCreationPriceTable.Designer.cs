@@ -3,15 +3,17 @@ using System;
 using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace BaseModels.Migrations
 {
     [DbContext(typeof(GwDbContext))]
-    partial class GwDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210108100525_AddedRecipeCreationPriceTable")]
+    partial class AddedRecipeCreationPriceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -394,15 +396,12 @@ namespace BaseModels.Migrations
                     b.Property<int>("CreationPriceBuyOrder")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ItemId")
+                    b.Property<int>("Items")
                         .HasColumnType("integer");
-
-                    b.Property<bool>("PossibleToBuy")
-                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ItemId");
+                    b.HasIndex("Items");
 
                     b.ToTable("RecipePrices");
                 });
@@ -462,6 +461,24 @@ namespace BaseModels.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skins");
+                });
+
+            modelBuilder.Entity("BaseModels.TPListing", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UnitPrice")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TPListings");
                 });
 
             modelBuilder.Entity("BaseModels.Trinket", b =>
@@ -660,7 +677,7 @@ namespace BaseModels.Migrations
                 {
                     b.HasOne("BaseModels.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemId")
+                        .HasForeignKey("Items")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

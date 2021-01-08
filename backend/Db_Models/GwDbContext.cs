@@ -16,17 +16,6 @@ namespace BaseModels
         {
         }
 
-        public GwDbContext(string connectionString) : base(GetDbContextOptions(connectionString))
-        {
-        }
-
-        private static DbContextOptions GetDbContextOptions(string connectionString)
-        {
-            DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
-            builder.UseNpgsql(connectionString);
-            return builder.Options;
-        }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             //item class
@@ -75,11 +64,11 @@ namespace BaseModels
             builder.Entity<Listing>()
                 .Property(e => e.BuyListing)
                 .HasConversion(v => JsonConvert.SerializeObject(v),
-                v => JsonConvert.DeserializeObject<List<int>>(v));
+                v => JsonConvert.DeserializeObject<List<TPListing>>(v));
             builder.Entity<Listing>()
                 .Property(e => e.SellListing)
                 .HasConversion(v => JsonConvert.SerializeObject(v),
-                v => JsonConvert.DeserializeObject<List<int>>(v));
+                v => JsonConvert.DeserializeObject<List<TPListing>>(v));
 
             //Skin class
             builder.Entity<Skin>()
@@ -147,10 +136,11 @@ namespace BaseModels
         public DbSet<Miniature> Miniatures { get; set; }
         public DbSet<SalvageKit> SalvageKits { get; set; }
         public DbSet<Skin> Skins { get; set; }
-        public DbSet<TPListing> TPListings { get; set; }
         public DbSet<Trinket> Trinkets { get; set; }
         public DbSet<UpgradeComponent> UpgradeComponents { get; set; }
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipePrice> RecipePrices { get; set; }
+        public DbSet<UpdateTime> UpdateTimees { get; set; }
     }
 }

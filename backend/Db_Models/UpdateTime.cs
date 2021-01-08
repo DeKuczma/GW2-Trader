@@ -5,9 +5,11 @@ using System.Text;
 
 namespace BaseModels
 {
-    public class TPListing
+    public class UpdateTime
     {
-        public int UnitPrice { get; set; }
-        public int Quantity { get; set; }
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public DateTime LastUpdate { get; set; }
     }
 }
