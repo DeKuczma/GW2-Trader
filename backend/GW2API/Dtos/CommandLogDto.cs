@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace BaseModels
+namespace GW2API.Dtos
 {
-    public class CommandExecutionLog
+    public class CommandLogDto
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         public DateTime LastUpdate { get; set; }
         [Required]
@@ -17,6 +16,5 @@ namespace BaseModels
         public int Inserted { get; set; }
         [Required]
         public string CommandExecuted { get; set; }
-
     }
 }

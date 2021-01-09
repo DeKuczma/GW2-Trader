@@ -12,5 +12,7 @@ namespace GW2API.Datas
         public IEnumerable<Recipe> GetAllRecipes();
         public IEnumerable<Item> GetAllItems();
         public void AddRecipePrice(RecipePrice recipePrice);
+        public CommandLog GetLatestLog();
+        public CommandLog GetLogById(int id);
     }
 }

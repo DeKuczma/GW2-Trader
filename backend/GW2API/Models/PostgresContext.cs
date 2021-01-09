@@ -140,6 +140,6 @@ namespace GW2API.Models
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipePrice> RecipePrices { get; set; }
-        public DbSet<CommandExecutionLog> CommandExecutionLogs { get; set; }
+        public DbSet<CommandLog> CommandLogs { get; set; }
     }
 }

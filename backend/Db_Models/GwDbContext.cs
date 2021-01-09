@@ -141,6 +141,6 @@ namespace BaseModels
         public DbSet<Weapon> Weapons { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<RecipePrice> RecipePrices { get; set; }
-        public DbSet<CommandExecutionLog> UpdateTimees { get; set; }
+        public DbSet<CommandLog> CommandLogs { get; set; }
     }
 }

@@ -8,9 +8,9 @@ using GW2API.Models;
 
 namespace GW2API.Profiles
 {
-    public class CommandsProfile : Profile
+    public class CommandProfile : Profile
     {
-        public CommandsProfile()
+        public CommandProfile()
         {
             CreateMap<ExecuteCommandReadDto, ExecuteCommand>();
         }

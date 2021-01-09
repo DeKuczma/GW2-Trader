@@ -31,6 +31,15 @@ namespace GW2API.Datas
             return _context.Recipes;
         }
 
+        public CommandLog GetLatestLog()
+        {
+            return _context.CommandLogs.FirstOrDefault(v => v.LastUpdate == _context.CommandLogs.Max(v => v.LastUpdate));
+        }
+        public CommandLog GetLogById(int id)
+        {
+            return _context.CommandLogs.FirstOrDefault(v => v.Id == id);
+        }
+
         public bool SaveChanges()
         {
             return (_context.SaveChanges() >= 0);
