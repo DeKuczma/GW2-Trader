@@ -16,6 +16,8 @@ using BaseModels;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using GW2API.Models;
+using System.Net.Http;
+using GW2API.APICalls;
 
 namespace GW2API
 {
@@ -42,6 +44,7 @@ namespace GW2API
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnectionString"));
             });
             services.AddScoped<IRepo, PostgresRepo>();
+            services.AddScoped<IApiCalls, GwApiCalls>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 

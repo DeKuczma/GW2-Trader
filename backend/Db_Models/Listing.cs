@@ -10,11 +10,12 @@ namespace BaseModels
     {
         [Key]
         public int Id { get; set; }
-        [Required, ForeignKey("ItemId")]
+        [Required]
+        public int ItemId { get; set; }
         public Item Item { get; set; }
         [Required]
-        public List<TPListing> BuyListing { get; set; }
+        public List<TPListing> Buys { get; set; }
         [Required]
-        public List<TPListing> SellListing { get; set; }
+        public List<TPListing> Sells { get; set; }
     }
 }

@@ -62,11 +62,11 @@ namespace BaseModels
 
             //Listing class
             builder.Entity<Listing>()
-                .Property(e => e.BuyListing)
+                .Property(e => e.Buys)
                 .HasConversion(v => JsonConvert.SerializeObject(v),
                 v => JsonConvert.DeserializeObject<List<TPListing>>(v));
             builder.Entity<Listing>()
-                .Property(e => e.SellListing)
+                .Property(e => e.Sells)
                 .HasConversion(v => JsonConvert.SerializeObject(v),
                 v => JsonConvert.DeserializeObject<List<TPListing>>(v));
 

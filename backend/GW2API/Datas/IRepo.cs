@@ -14,5 +14,9 @@ namespace GW2API.Datas
         public void AddRecipePrice(RecipePrice recipePrice);
         public CommandLog GetLatestLog();
         public CommandLog GetLogById(int id);
+        public int GetRecipePricesCount();
+        public int GetTpPricesCount();
+        public void AddListings(IEnumerable<Listing> listings);
+        public void AddCommandLog(CommandLog commandLog);
     }
 }

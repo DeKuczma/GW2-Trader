@@ -16,33 +16,32 @@ namespace GW2API.Datas
             _context = context;
         }
 
+        public void AddCommandLog(CommandLog commandLog)
+        {
+            _context.CommandLogs.Add(commandLog);
+        }
+
+        public void AddListings(IEnumerable<Listing> listings)
+        {
+            _context.Listings.AddRange(listings);
+        }
+
         public void AddRecipePrice(RecipePrice recipePrice)
         {
             _context.RecipePrices.Add(recipePrice);
         }
 
-        public IEnumerable<Item> GetAllItems()
-        {
-            return _context.Items;
-        }
+        public IEnumerable<Item> GetAllItems() => _context.Items;
 
-        public IEnumerable<Recipe> GetAllRecipes()
-        {
-            return _context.Recipes;
-        }
+        public IEnumerable<Recipe> GetAllRecipes() => _context.Recipes;
 
-        public CommandLog GetLatestLog()
-        {
-            return _context.CommandLogs.FirstOrDefault(v => v.LastUpdate == _context.CommandLogs.Max(v => v.LastUpdate));
-        }
-        public CommandLog GetLogById(int id)
-        {
-            return _context.CommandLogs.FirstOrDefault(v => v.Id == id);
-        }
+        public CommandLog GetLatestLog() => _context.CommandLogs.FirstOrDefault(v => v.LastUpdate == _context.CommandLogs.Max(v => v.LastUpdate));
+        public CommandLog GetLogById(int id) => _context.CommandLogs.FirstOrDefault(v => v.Id == id);
 
-        public bool SaveChanges()
-        {
-            return (_context.SaveChanges() >= 0);
-        }
+        public int GetRecipePricesCount() => _context.RecipePrices.Count();
+
+        public int GetTpPricesCount() => _context.Listings.Count();
+
+        public bool SaveChanges() => (_context.SaveChanges() >= 0);
     }
 }
