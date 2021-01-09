@@ -40,16 +40,12 @@ namespace GW2API.Datas
         }
 
         public IEnumerable<Item> GetAllItems() => _context.Items;
-
         public IEnumerable<Recipe> GetAllRecipes() => _context.Recipes;
-
         public CommandLog GetLatestLog() => _context.CommandLogs.FirstOrDefault(v => v.LastUpdate == _context.CommandLogs.Max(v => v.LastUpdate));
         public CommandLog GetLogById(int id) => _context.CommandLogs.FirstOrDefault(v => v.Id == id);
-
         public int GetRecipePricesCount() => _context.RecipePrices.Count();
-
         public int GetTpPricesCount() => _context.Listings.Count();
-
+        public int GetListingsCount() => _context.Listings.Count();
         public bool SaveChanges() => (_context.SaveChanges() >= 0);
     }
 }

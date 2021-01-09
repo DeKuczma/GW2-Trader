@@ -52,15 +52,15 @@ namespace GW2API.Controllers
 
             IEnumerable<Listing> listingsToAdd = await apiCalls.GetAllListings();
 
+            _repo.AddListings(listingsToAdd);
+
             CommandLog commandLog = new CommandLog();
             commandLog.Deleted = (_repo.GetRecipePricesCount() + _repo.GetTpPricesCount());
             commandLog.CommandExecuted = "update";
-            commandLog.Inserted = ((List<Listing>)listingsToAdd).Count;
             commandLog.LastUpdate = DateTime.Now;
-
-
-            _repo.AddListings(listingsToAdd);
+            commandLog.Inserted = _repo.GetListingsCount();
             _repo.AddCommandLog(commandLog);
+
             if (_repo.SaveChanges())
             {
                 CommandLogDto commandLogDto = _mapper.Map<CommandLogDto>(commandLog);
