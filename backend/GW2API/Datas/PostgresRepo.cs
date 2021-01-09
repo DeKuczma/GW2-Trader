@@ -23,7 +23,15 @@ namespace GW2API.Datas
 
         public void AddListings(IEnumerable<Listing> listings)
         {
-            _context.Listings.AddRange(listings);
+            foreach (var listing in listings)
+            {
+                if(listing.ItemId > 0 && _context.Items.FirstOrDefault(v => v.Id == listing.ItemId) != null)
+                    _context.Listings.Add(listing);
+                else
+                {
+                    int count =_context.Listings.Count();
+                }
+            }
         }
 
         public void AddRecipePrice(RecipePrice recipePrice)
