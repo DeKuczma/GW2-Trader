@@ -47,5 +47,30 @@ namespace GW2API.Datas
         public int GetTpPricesCount() => _context.Listings.Count();
         public int GetListingsCount() => _context.Listings.Count();
         public bool SaveChanges() => (_context.SaveChanges() >= 0);
+
+        public List<TPListing> GetItemBuyOrder(int itemId)
+        {
+
+            Listing listing = _context.Listings.FirstOrDefault(l => l.ItemId == itemId);
+            if (listing == null)
+                return null;
+            else
+                return listing.Sells;
+        }
+
+        public List<TPListing> GetItemSellOrder(int itemId)
+        {
+            Listing listing = _context.Listings.FirstOrDefault(l => l.ItemId == itemId);
+            if (listing == null)
+                return null;
+            else
+                return listing.Buys;
+        }
+
+        public void ClearListings()
+        {
+            _context.Database.ExecuteSqlRaw("DELETE FROM \"RecipePrices\"");
+            _context.Database.ExecuteSqlRaw("DELETE FROM \"Listings\"");
+        }
     }
 }

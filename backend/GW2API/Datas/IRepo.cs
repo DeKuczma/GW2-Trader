@@ -19,5 +19,8 @@ namespace GW2API.Datas
         public void AddListings(IEnumerable<Listing> listings);
         public void AddCommandLog(CommandLog commandLog);
         public int GetListingsCount();
+        public List<TPListing> GetItemBuyOrder(int itemId);
+        public List<TPListing> GetItemSellOrder(int itemId);
+        public void ClearListings();
     }
 }

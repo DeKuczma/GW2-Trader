@@ -42,7 +42,7 @@ namespace GW2API
             services.AddDbContext<PostgresContext>(opt =>
             {
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnectionString"));
-            });
+            }, ServiceLifetime.Transient);
             services.AddScoped<IRepo, PostgresRepo>();
             services.AddScoped<IApiCalls, GwApiCalls>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

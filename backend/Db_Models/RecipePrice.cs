@@ -10,7 +10,8 @@ namespace BaseModels
     {
         [Key]
         public int Id { get; set; }
-        [Required, ForeignKey("ItemId")]
+        [Required]
+        public int ItemId { get; set; }
         public Item Item { get; set; }
         public int CreationPriceBuyNow { get; set; }
         public int CreationPriceBuyOrder { get; set; }
