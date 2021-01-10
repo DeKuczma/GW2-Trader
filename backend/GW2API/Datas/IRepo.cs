@@ -22,5 +22,10 @@ namespace GW2API.Datas
         public List<TPListing> GetItemBuyOrder(int itemId);
         public List<TPListing> GetItemSellOrder(int itemId);
         public void ClearListings();
+        public IEnumerable<RecipePrice> GetAllRecipePrices();
+        public RecipePrice GetRecipePriceById(int id);
+        public IEnumerable<RecipePrice> GetRecipePriceByBuyNowProfit();
+        public IEnumerable<RecipePrice> GetRecipePriceByBuyOrderProfit();
+
     }
 }

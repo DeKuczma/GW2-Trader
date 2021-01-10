@@ -46,32 +46,32 @@ namespace GW2API.Controllers
 
         private async Task<ActionResult<CommandLogDto>> UpdateDb(IApiCalls apiCalls)
         {
-            //DateTime lastUpdateTime = _repo.GetLatestLog().LastUpdate;
+            DateTime lastUpdateTime = _repo.GetLatestLog().LastUpdate;
 
-            //if (DateTime.Now < lastUpdateTime.AddHours(1))
-            //    return NoContent();
+            if (DateTime.Now < lastUpdateTime.AddHours(1))
+                return NoContent();
 
-            //_repo.ClearListings();
-            //IEnumerable<Listing> listingsToAdd = await apiCalls.GetAllListings();
+            _repo.ClearListings();
+            IEnumerable<Listing> listingsToAdd = await apiCalls.GetAllListings();
 
-            //_repo.AddListings(listingsToAdd);
+            _repo.AddListings(listingsToAdd);
 
-            //CommandLog commandLog = new CommandLog();
-            //commandLog.Deleted = (_repo.GetRecipePricesCount() + _repo.GetTpPricesCount());
-            //commandLog.CommandExecuted = "update";
-            //commandLog.LastUpdate = DateTime.Now;
-            //commandLog.Inserted = _repo.GetListingsCount();
-            //_repo.AddCommandLog(commandLog);
+            CommandLog commandLog = new CommandLog();
+            commandLog.Deleted = (_repo.GetRecipePricesCount() + _repo.GetTpPricesCount());
+            commandLog.CommandExecuted = "update";
+            commandLog.LastUpdate = DateTime.Now;
+            commandLog.Inserted = _repo.GetListingsCount();
+            _repo.AddCommandLog(commandLog);
 
             SetAllRecipesCreationPrice();
 
-            //if (_repo.SaveChanges())
-            //{
-            //    //return NotFound();
-            //    CommandLogDto commandLogDto = _mapper.Map<CommandLogDto>(commandLog);
-            ////TODO: change to add rout in response header
-            //    return Ok(commandLogDto);
-            //}
+            if (_repo.SaveChanges())
+            {
+                //return NotFound();
+                CommandLogDto commandLogDto = _mapper.Map<CommandLogDto>(commandLog);
+            //TODO: change to add rout in response header
+                return Ok(commandLogDto);
+            }
 
             return NotFound();
         }
@@ -93,7 +93,7 @@ namespace GW2API.Controllers
                 {
                     itemPrice = null;
                     recipePrice.PossibleToBuy = false;
-                    _repo.AddRecipePrice(recipePrice);
+                    
                     continue;
                 }
 
@@ -127,11 +127,12 @@ namespace GW2API.Controllers
                     recipePrice.CreationPriceBuyNow = itemPrice.Value - creationPriceBuyNow.Value;
                 if(creationPriceBuyOrder != null)
                     recipePrice.CreationPriceBuyOrder = itemPrice.Value - creationPriceBuyOrder.Value;
-                if (creationPriceBuyOrder != null && creationPriceBuyNow != null)
+                if (creationPriceBuyOrder == null && creationPriceBuyNow == null)
                     recipePrice.PossibleToBuy = false;
                 else
                     recipePrice.PossibleToBuy = true;
-                _repo.AddRecipePrice(recipePrice);
+                if(recipePrice.PossibleToBuy)
+                    _repo.AddRecipePrice(recipePrice);
             }
         }
 

@@ -55,7 +55,7 @@ namespace GW2API.Datas
             if (listing == null)
                 return null;
             else
-                return listing.Sells;
+                return listing.Buys;
         }
 
         public List<TPListing> GetItemSellOrder(int itemId)
@@ -64,13 +64,33 @@ namespace GW2API.Datas
             if (listing == null)
                 return null;
             else
-                return listing.Buys;
+                return listing.Sells;
         }
 
         public void ClearListings()
         {
             _context.Database.ExecuteSqlRaw("DELETE FROM \"RecipePrices\"");
             _context.Database.ExecuteSqlRaw("DELETE FROM \"Listings\"");
+        }
+
+        public IEnumerable<RecipePrice> GetAllRecipePrices()
+        {
+            return _context.RecipePrices.ToList();
+        }
+
+        public RecipePrice GetRecipePriceById(int id)
+        {
+            return _context.RecipePrices.FirstOrDefault(v => v.Id == id);
+        }
+
+        public IEnumerable<RecipePrice> GetRecipePriceByBuyNowProfit()
+        {
+            return _context.RecipePrices.Where(v => v.CreationPriceBuyNow > 0);
+        }
+
+        public IEnumerable<RecipePrice> GetRecipePriceByBuyOrderProfit()
+        {
+            return _context.RecipePrices.Where(v => v.CreationPriceBuyOrder > 0);
         }
     }
 }
