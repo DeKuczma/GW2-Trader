@@ -92,5 +92,7 @@ namespace GW2API.Datas
         {
             return _context.RecipePrices.Where(v => v.CreationPriceBuyOrder > 0);
         }
+
+        public Item GetItemById(int id) => _context.Items.FirstOrDefault(v => v.Id == id);
     }
 }

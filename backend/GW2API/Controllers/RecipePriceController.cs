@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GW2API.Controllers
 {
-    [Route("api/crafting")]
+    [Route("api/Crafting")]
     [ApiController]
     public class RecipePriceController : ControllerBase
     {
@@ -40,7 +40,7 @@ namespace GW2API.Controllers
             return Ok(_mapper.Map<RecipePriceDto>(recipePrice));
         }
 
-        [HttpGet("profitable/{buyOrder}")]
+        [HttpGet("Profitable/{buyOrder}")]
         public ActionResult<IEnumerable<RecipePrice>> GetProfitableRecipePrice(bool buyOrder)
         {
             IEnumerable<RecipePrice> recipePrices;

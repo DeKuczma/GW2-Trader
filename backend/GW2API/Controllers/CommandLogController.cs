@@ -10,7 +10,7 @@ using AutoMapper;
 
 namespace GW2API.Controllers
 {
-    [Route("api/logs")]
+    [Route("api/Logs")]
     [ApiController]
     public class CommandLogController : ControllerBase
     {

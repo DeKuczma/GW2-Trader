@@ -12,7 +12,7 @@ using System.Linq;
 
 namespace GW2API.Controllers
 {
-    [Route("api/execute_command")]
+    [Route("api/ExecuteCommand")]
     [ApiController]
     public class ExecuteCommandController : ControllerBase
     {

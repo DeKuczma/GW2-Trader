@@ -11,6 +11,7 @@ namespace GW2API.Datas
         public bool SaveChanges();
         public IEnumerable<Recipe> GetAllRecipes();
         public IEnumerable<Item> GetAllItems();
+        public Item GetItemById(int id);
         public void AddRecipePrice(RecipePrice recipePrice);
         public CommandLog GetLatestLog();
         public CommandLog GetLogById(int id);
